@@ -81,22 +81,21 @@
     <div class="marketing-col">
       <h3>Just the UI</h3>
       <p>
-        Lots of people use React as the V in MVC.
-        Since React makes no assumptions about the rest of your technology stack,
-        it&apos;s easy to try it out on a small feature in an existing project.
+        很多人将React作为MVC中的V(视图)来使用.
+        React不会对你的技术栈做任何假设,
+        所以React很容易作为一个很小的特性使用在一个已有的项目中.
       </p>
     </div>
     <div class="marketing-col">
       <h3>Virtual DOM</h3>
       <p>
-        React abstracts away the DOM from you, giving a simpler programming model and better performance. React can also render on the server using Node, and it can power native apps using <a href="https://facebook.github.io/react-native/">React Native</a>.
+        React 让你以抽象的方式使用DOM,给你提供了一个简单的编程模式和更好的展示方式,React也提供了通过Node在服务器端渲染, 你也可以使用React Native开发Native Apps<a href="https://facebook.github.io/react-native/">React Native</a>.
       </p>
     </div>
     <div class="marketing-col">
       <h3>Data flow</h3>
       <p>
-        React implements one-way reactive data flow which reduces boilerplate and is
-        easier to reason about than traditional data binding.
+        React实现了单向数据流降低了样板,所以React比传统的方式更容易做数据绑定.
       </p>
     </div>
   </div>
@@ -107,45 +106,39 @@
     <div class="example">
       <h3>A Simple Component</h3>
       <p>
-        React components implement a <code>render()</code> method that takes input data and
-        returns what to display. This example uses an XML-like syntax called
-        JSX. Input data that is passed into the component can be accessed by
-        <code>render()</code> via <code>this.props</code>.
+        React组件实现了<code>render()</code> 方法提供输入的数据并返回你要展示的信息,
+        这个例子使用一种叫做JSX的类XML语法.传递到该组件的数据,在<code>render()</code>方法中,
+        可以通过<code>this.props</code>来访问.
       </p>
       <p>
-        <strong>JSX is optional and not required to use React.</strong> Try
-        clicking on &quot;Compiled JS&quot; to see the raw JavaScript code produced by
-        the JSX compiler.
+        <strong>在使用React的时候,JSX并不是强制要求的,你可以选择性的使用</strong>
+        点击 &quot;Compiled JS&quot; 可以看到被JSX编译器编译后的代码.
       </p>
       <div id="helloExample"></div>
     </div>
     <div class="example">
       <h3>A Stateful Component</h3>
       <p>
-        In addition to taking input data (accessed via <code>this.props</code>), a
-        component can maintain internal state data (accessed via <code>this.state</code>).
-        When a component&#39;s state data changes, the rendered markup will be
-        updated by re-invoking <code>render()</code>.
+        除了输入数据以外(通过<code>this.props</code>访问),
+        组件也可以保存内部状态数据(通过<code>this.state</code>访问).
+        当组件状态数据改变的时候, 将通过<code>render()</code>方法来重新渲染组件.
       </p>
       <div id="timerExample"></div>
     </div>
     <div class="example">
       <h3>An Application</h3>
       <p>
-        Using <code>props</code> and <code>state</code>, we can put together a small Todo application.
-        This example uses <code>state</code> to track the current list of items as well as
-        the text that the user has entered. Although event handlers appear to be
-        rendered inline, they will be collected and implemented using event
-        delegation.
+        使用<code>props</code> and <code>state</code>, 我们可以创建一个小的ToDo应用程序.
+        这个例子使用<code>state</code>来跟踪当前的列表的所有项和用户输入的数据,尽管事件处理看起来呈现内联,
+        它们实际上是通过事件委托来实现的.
       </p>
       <div id="todoExample"></div>
     </div>
     <div class="example">
       <h3>A Component Using External Plugins</h3>
       <p>
-        React is flexible and provides hooks that allow you to interface with
-        other libraries and frameworks. This example uses <strong>marked</strong>, an external
-        Markdown library, to convert the textarea&#39;s value in real-time.
+        React非常的灵活,React提供了钩子,允许你和其他的库或者框架一起使用,这个例子使用<strong>marked</strong>, 一个外部的Markdown库,
+        将文本区的值进行实时转换.
       </p>
       <div id="markdownExample"></div>
     </div>
