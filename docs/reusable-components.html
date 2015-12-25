@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Reusable Components | React</title>
+  <title>可复用组件 | React</title>
   <meta name="viewport" content="width=device-width">
-  <meta property="og:title" content="Reusable Components | React">
+  <meta property="og:title" content="可复用组件 | React">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://facebook.github.io/react/docs/reusable-components.html">
+  <meta property="og:url" content="https://facebook.github.io/react/docs/reusable-components-zh-CN.html">
   <meta property="og:image" content="https://facebook.github.io/react/img/logo_og.png">
   <meta property="og:description" content="A JavaScript library for building user interfaces">
   <meta property="fb:app_id" content="623268441017527">
@@ -155,7 +155,7 @@
           </li>
         
           <li>
-            <a href="/react/docs/reusable-components.html" class="active">Reusable Components</a>
+            <a href="/react/docs/reusable-components.html">Reusable Components</a>
             
           </li>
         
@@ -406,18 +406,18 @@
 
   <div class="inner-content">
     <h1>
-      Reusable Components
-      <a class="edit-page-link" href="https://github.com/facebook/react/tree/master/docs/docs/05-reusable-components.md" target="_blank">Edit on GitHub</a>
+      可复用组件
+      <a class="edit-page-link" href="https://github.com/facebook/react/tree/master/docs/docs/05-reusable-components.zh-CN.md" target="_blank">Edit on GitHub</a>
     </h1>
     <div class="subHeader"></div>
 
-    <p>When designing interfaces, break down the common design elements (buttons, form fields, layout components, etc.) into reusable components with well-defined interfaces. That way, the next time you need to build some UI, you can write much less code. This means faster development time, fewer bugs, and fewer bytes down the wire.</p>
-<h2><a class="anchor" name="prop-validation"></a>Prop Validation <a class="hash-link" href="#prop-validation">#</a></h2>
-<p>As your app grows it&#39;s helpful to ensure that your components are used correctly. We do this by allowing you to specify <code>propTypes</code>. <code>React.PropTypes</code> exports a range of validators that can be used to make sure the data you receive is valid. When an invalid value is provided for a prop, a warning will be shown in the JavaScript console. Note that for performance reasons <code>propTypes</code> is only checked in development mode. Here is an example documenting the different validators provided:</p>
+    <p>设计接口的时候，把通用的设计元素（按钮，表单框，布局组件等）拆成接口良好定义的可复用的组件。这样，下次开发相同界面程序时就可以写更少的代码，也意义着更高的开发效率，更少的 Bug 和更少的程序体积。</p>
+<h2><a class="anchor" name="prop-"></a>Prop 验证 <a class="hash-link" href="#prop-">#</a></h2>
+<p>随着应用不断变大，保证组件被正确使用变得非常有用。为此我们引入 <code>propTypes</code>。<code>React.PropTypes</code> 提供很多验证器 (validator) 来验证传入数据的有效性。当向 props 传入无效数据时，JavaScript 控制台会抛出警告。注意为了性能考虑，只在开发环境验证 <code>propTypes</code>。下面用例子来说明不同验证器的区别：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">propTypes</span><span class="o">:</span> <span class="p">{</span>
-    <span class="c1">// You can declare that a prop is a specific JS primitive. By default, these</span>
-    <span class="c1">// are all optional.</span>
+    <span class="c1">// 可以声明 prop 为指定的 JS 基本类型。默认</span>
+    <span class="c1">// 情况下，这些 prop 都是可传可不传的。</span>
     <span class="nx">optionalArray</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">array</span><span class="p">,</span>
     <span class="nx">optionalBool</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">bool</span><span class="p">,</span>
     <span class="nx">optionalFunc</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">,</span>
@@ -425,50 +425,50 @@
     <span class="nx">optionalObject</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">object</span><span class="p">,</span>
     <span class="nx">optionalString</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
 
-    <span class="c1">// Anything that can be rendered: numbers, strings, elements or an array</span>
-    <span class="c1">// (or fragment) containing these types.</span>
+    <span class="c1">// 所有可以被渲染的对象：数字，</span>
+    <span class="c1">// 字符串，DOM 元素或包含这些类型的数组(or fragment) 。</span>
     <span class="nx">optionalNode</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">node</span><span class="p">,</span>
 
-    <span class="c1">// A React element.</span>
+    <span class="c1">// React 元素</span>
     <span class="nx">optionalElement</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">element</span><span class="p">,</span>
 
-    <span class="c1">// You can also declare that a prop is an instance of a class. This uses</span>
-    <span class="c1">// JS&#39;s instanceof operator.</span>
+    <span class="c1">// 你同样可以断言一个 prop 是一个类的实例。</span>
+    <span class="c1">// 用 JS 的 instanceof 操作符声明 prop 为类的实例。</span>
     <span class="nx">optionalMessage</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">instanceOf</span><span class="p">(</span><span class="nx">Message</span><span class="p">),</span>
 
-    <span class="c1">// You can ensure that your prop is limited to specific values by treating</span>
-    <span class="c1">// it as an enum.</span>
+    <span class="c1">// 你可以用 enum 的方式</span>
+    <span class="c1">// 确保你的 prop 被限定为指定值。</span>
     <span class="nx">optionalEnum</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">oneOf</span><span class="p">([</span><span class="s1">&#39;News&#39;</span><span class="p">,</span> <span class="s1">&#39;Photos&#39;</span><span class="p">]),</span>
 
-    <span class="c1">// An object that could be one of many types</span>
+    <span class="c1">// 指定的多个对象类型中的一个</span>
     <span class="nx">optionalUnion</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">oneOfType</span><span class="p">([</span>
       <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
       <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">,</span>
       <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">instanceOf</span><span class="p">(</span><span class="nx">Message</span><span class="p">)</span>
     <span class="p">]),</span>
 
-    <span class="c1">// An array of a certain type</span>
+    <span class="c1">// 指定类型组成的数组</span>
     <span class="nx">optionalArrayOf</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">arrayOf</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">),</span>
 
-    <span class="c1">// An object with property values of a certain type</span>
+    <span class="c1">// 指定类型的属性构成的对象</span>
     <span class="nx">optionalObjectOf</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">objectOf</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">),</span>
 
-    <span class="c1">// An object taking on a particular shape</span>
+    <span class="c1">// 特定形状参数的对象</span>
     <span class="nx">optionalObjectWithShape</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">shape</span><span class="p">({</span>
       <span class="nx">color</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
       <span class="nx">fontSize</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span>
     <span class="p">}),</span>
 
-    <span class="c1">// You can chain any of the above with `isRequired` to make sure a warning</span>
-    <span class="c1">// is shown if the prop isn&#39;t provided.</span>
+    <span class="c1">// 你可以在任意东西后面加上 `isRequired`</span>
+    <span class="c1">// 来确保 如果 prop 没有提供 就会显示一个警告。</span>
     <span class="nx">requiredFunc</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
 
-    <span class="c1">// A value of any data type</span>
+    <span class="c1">// 不可空的任意类型</span>
     <span class="nx">requiredAny</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">any</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
 
-    <span class="c1">// You can also specify a custom validator. It should return an Error</span>
-    <span class="c1">// object if the validation fails. Don&#39;t `console.warn` or throw, as this</span>
-    <span class="c1">// won&#39;t work inside `oneOfType`.</span>
+    <span class="c1">// 你可以自定义一个验证器。如果验证失败需要返回一个 Error 对象。</span>
+    <span class="c1">// 不要直接使用 `console.warn` 或抛异常，</span>
+    <span class="c1">// 因为这在 `oneOfType` 里不起作用。</span>
     <span class="nx">customProp</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">props</span><span class="p">,</span> <span class="nx">propName</span><span class="p">,</span> <span class="nx">componentName</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="sr">/matchme/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">props</span><span class="p">[</span><span class="nx">propName</span><span class="p">]))</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Validation failed!&#39;</span><span class="p">);</span>
@@ -478,7 +478,7 @@
   <span class="cm">/* ... */</span>
 <span class="p">});</span>
 </code></pre></div><h3><a class="anchor" name="single-child"></a>Single Child <a class="hash-link" href="#single-child">#</a></h3>
-<p>With <code>React.PropTypes.element</code> you can specify that only a single child can be passed to a component as children.</p>
+<p>用  <code>React.PropTypes.element</code> 你可以指定仅有一个子级能被传送给组件</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">MyComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">propTypes</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">children</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">isRequired</span>
@@ -487,14 +487,14 @@
   <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
-        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span> <span class="c1">// This must be exactly one element or it will warn.</span>
+        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span> <span class="c1">// 这里必须是一个元素否则就会警告</span>
       <span class="o">&lt;</span><span class="err">/div&gt;</span>
     <span class="p">);</span>
   <span class="p">}</span>
 
 <span class="p">});</span>
-</code></pre></div><h2><a class="anchor" name="default-prop-values"></a>Default Prop Values <a class="hash-link" href="#default-prop-values">#</a></h2>
-<p>React lets you define default values for your <code>props</code> in a very declarative way:</p>
+</code></pre></div><h2><a class="anchor" name="-prop-"></a>默认 Prop 值 <a class="hash-link" href="#-prop-">#</a></h2>
+<p>React 支持以声明式的方式来定义 <code>props</code> 的默认值。</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">ComponentWithDefaultProps</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">getDefaultProps</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
@@ -504,12 +504,12 @@
   <span class="cm">/* ... */</span>
 <span class="p">});</span>
 </code></pre></div>
-<p>The result of <code>getDefaultProps()</code> will be cached and used to ensure that <code>this.props.value</code> will have a value if it was not specified by the parent component. This allows you to safely just use your props without having to write repetitive and fragile code to handle that yourself.</p>
-<h2><a class="anchor" name="transferring-props-a-shortcut"></a>Transferring Props: A Shortcut <a class="hash-link" href="#transferring-props-a-shortcut">#</a></h2>
-<p>A common type of React component is one that extends a basic HTML element in a simple way. Often you&#39;ll want to copy any HTML attributes passed to your component to the underlying HTML element. To save typing, you can use the JSX <em>spread</em> syntax to achieve this:</p>
+<p>当父级没有传入 props 时，<code>getDefaultProps()</code> 可以保证  <code>this.props.value</code> 有默认值，注意 <code>getDefaultProps</code> 的结果会被 <em>缓存</em>。得益于此，你可以直接使用 props，而不必写手动编写一些重复或无意义的代码。</p>
+<h2><a class="anchor" name="-props"></a>传递 Props：捷径 <a class="hash-link" href="#-props">#</a></h2>
+<p>有一些常用的 React 组件只是对 HTML 做简单扩展。通常，你想 复制任何传进你的组件的HTML属性 到底层的HTML元素上。为了减少输入，你可以用 JSX <em>spread</em>  语法来完成：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">CheckLink</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
   <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// This takes any props passed to CheckLink and copies them to &lt;a&gt;</span>
+    <span class="c1">// 这样会把 CheckList 所有的 props 复制到 &lt;a&gt;</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">a</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="s1">&#39;√ &#39;</span><span class="p">}{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/a&gt;;</span>
   <span class="p">}</span>
 <span class="p">});</span>
@@ -521,9 +521,9 @@
   <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div><h2><a class="anchor" name="mixins"></a>Mixins <a class="hash-link" href="#mixins">#</a></h2>
-<p>Components are the best way to reuse code in React, but sometimes very different components may share some common functionality. These are sometimes called <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">cross-cutting concerns</a>. React provides <code>mixins</code> to solve this problem.</p>
+<p>组件是 React 里复用代码最佳方式，但是有时一些复杂的组件间也需要共用一些功能。有时会被称为 <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern">跨切面关注点</a>。React 使用 <code>mixins</code> 来解决这类问题。</p>
 
-<p>One common use case is a component wanting to update itself on a time interval. It&#39;s easy to use <code>setInterval()</code>, but it&#39;s important to cancel your interval when you don&#39;t need it anymore to save memory. React provides <a href="/react/docs/working-with-the-browser.html#component-lifecycle">lifecycle methods</a> that let you know when a component is about to be created or destroyed. Let&#39;s create a simple mixin that uses these methods to provide an easy <code>setInterval()</code> function that will automatically get cleaned up when your component is destroyed.</p>
+<p>一个通用的场景是：一个组件需要定期更新。用 <code>setInterval()</code> 做很容易，但当不需要它的时候取消定时器来节省内存是非常重要的。React 提供 <a href="/react/docs/working-with-the-browser.html#component-lifecycle">生命周期方法</a> 来告知组件创建或销毁的时间。下面来做一个简单的 mixin，使用 <code>setInterval()</code> 并保证在组件销毁时清理定时器。</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">SetIntervalMixin</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">componentWillMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">intervals</span> <span class="o">=</span> <span class="p">[];</span>
@@ -537,12 +537,12 @@
 <span class="p">};</span>
 
 <span class="kd">var</span> <span class="nx">TickTock</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
-  <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">SetIntervalMixin</span><span class="p">],</span> <span class="c1">// Use the mixin</span>
+  <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">SetIntervalMixin</span><span class="p">],</span> <span class="c1">// 引用 mixin</span>
   <span class="nx">getInitialState</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span><span class="nx">seconds</span><span class="o">:</span> <span class="mi">0</span><span class="p">};</span>
   <span class="p">},</span>
   <span class="nx">componentDidMount</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tick</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// Call a method on the mixin</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">tick</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span> <span class="c1">// 调用 mixin 的方法</span>
   <span class="p">},</span>
   <span class="nx">tick</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">seconds</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">seconds</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
@@ -561,9 +561,9 @@
   <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">)</span>
 <span class="p">);</span>
 </code></pre></div>
-<p>A nice feature of mixins is that if a component is using multiple mixins and several mixins define the same lifecycle method (i.e. several mixins want to do some cleanup when the component is destroyed), all of the lifecycle methods are guaranteed to be called. Methods defined on mixins run in the order mixins were listed, followed by a method call on the component.</p>
+<p>关于 mixin 值得一提的优点是，如果一个组件使用了多个 mixin，并用有多个 mixin 定义了同样的生命周期方法（如：多个 mixin 都需要在组件销毁时做资源清理操作），所有这些生命周期方法都保证会被执行到。方法执行顺序是：首先按 mixin 引入顺序执行 mixin 里方法，最后执行组件内定义的方法。</p>
 <h2><a class="anchor" name="es6-classes"></a>ES6 Classes <a class="hash-link" href="#es6-classes">#</a></h2>
-<p>You may also define your React classes as a plain JavaScript class. For example using ES6 class syntax:</p>
+<p>你也可以以一个简单的JavaScript 类来定义你的React classes。使用ES6 class的例子:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">class</span> <span class="nx">HelloMessage</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
@@ -571,9 +571,9 @@
 <span class="p">}</span>
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">HelloMessage</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Sebastian&quot;</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">mountNode</span><span class="p">);</span>
 </code></pre></div>
-<p>The API is similar to <code>React.createClass</code> with the exception of <code>getInitialState</code>. Instead of providing a separate <code>getInitialState</code> method, you set up your own <code>state</code> property in the constructor.</p>
+<p>API近似于 <code>React.createClass</code> 除了 <code>getInitialState</code>。 你应该在构造函数里设置你的<code>state</code>，而不是提供一个单独的  <code>getInitialState</code> 方法。</p>
 
-<p>Another difference is that <code>propTypes</code> and <code>defaultProps</code> are defined as properties on the constructor instead of in the class body.</p>
+<p>另一个不同是 <code>propTypes</code> 和 <code>defaultProps</code> 在构造函数而不是class body里被定义为属性。</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">export</span> <span class="kr">class</span> <span class="nx">Counter</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
     <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
@@ -592,39 +592,39 @@
 <span class="p">}</span>
 <span class="nx">Counter</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">initialCount</span><span class="o">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span> <span class="p">};</span>
 <span class="nx">Counter</span><span class="p">.</span><span class="nx">defaultProps</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">initialCount</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
-</code></pre></div><h3><a class="anchor" name="no-autobinding"></a>No Autobinding <a class="hash-link" href="#no-autobinding">#</a></h3>
-<p>Methods follow the same semantics as regular ES6 classes, meaning that they don&#39;t automatically bind <code>this</code> to the instance. You&#39;ll have to explicitly use <code>.bind(this)</code> or <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a> <code>=&gt;</code>.</p>
-<h3><a class="anchor" name="no-mixins"></a>No Mixins <a class="hash-link" href="#no-mixins">#</a></h3>
-<p>Unfortunately ES6 launched without any mixin support. Therefore, there is no support for mixins when you use React with ES6 classes. Instead, we&#39;re working on making it easier to support such use cases without resorting to mixins.</p>
-<h2><a class="anchor" name="stateless-functions"></a>Stateless Functions <a class="hash-link" href="#stateless-functions">#</a></h2>
-<p>You may also define your React classes as a plain JavaScript function. For example using the stateless function syntax:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>无自动绑定 <a class="hash-link" href="#">#</a></h3>
+<p>方法遵循正式的ES6 class的语义，意味着它们不会自动绑定<code>this</code>到实例上。你必须显示的使用<code>.bind(this)</code> or <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions">箭头函数</a> <code>=&gt;</code>.</p>
+<h3><a class="anchor" name="-mixins"></a>没有 Mixins <a class="hash-link" href="#-mixins">#</a></h3>
+<p>不幸的是ES6的发布没有任何mixin的支持。因此，当你在ES6 classes下使用React时不支持mixins。作为替代，我们正在努力使它更容易支持这些用例不依靠mixins。</p>
+<h2><a class="anchor" name=""></a>无状态函数 <a class="hash-link" href="#">#</a></h2>
+<p>你也可以用 JavaScript 函数来定义你的 React 类。例如使用无状态函数语法：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">HelloMessage</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
 <span class="p">}</span>
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">HelloMessage</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Sebastian&quot;</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">mountNode</span><span class="p">);</span>
 </code></pre></div>
-<p>Or using the new ES6 arrow syntax:</p>
+<p>或者使用新的ES6箭头函数:</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">HelloMessage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
 <span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">HelloMessage</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;Sebastian&quot;</span> <span class="o">/&gt;</span><span class="p">,</span> <span class="nx">mountNode</span><span class="p">);</span>
 </code></pre></div>
-<p>This simplified component API is intended for components that are pure functions of their props. These components must not retain internal state, do not have backing instances, and do not have the component lifecycle methods. They are pure functional transforms of their input, with zero boilerplate.
-However, you may still specify <code>.propTypes</code> and <code>.defaultProps</code> by setting them as properties on the function, just as you would set them on an ES6 class.</p>
+<p>这个简化的组件API旨在用于那些纯函数态的组件 。这些组件必须没有保持任何内部状态，没有备份实例，也没有组件生命周期方法。他们纯粹的函数式的转化他们的输入，没有引用。
+然而，你仍然可以以设置为函数的properties的方式来指定 <code>.propTypes</code> 和 <code>.defaultProps</code>，就像你在ES6类里设置他们那样。</p>
 
 <blockquote>
-<p>NOTE:</p>
+<p>注意：</p>
 
-<p>Because stateless functions don&#39;t have a backing instance, you can&#39;t attach a ref to a stateless function component. Normally this isn&#39;t an issue, since stateless functions do not provide an imperative API. Without an imperative API, there isn&#39;t much you could do with an instance anyway. However, if a user wants to find the DOM node of a stateless function component, they must wrap the component in a stateful component (eg. ES6 class component) and attach the ref to the stateful wrapper component.</p>
+<p>因为无状态函数没有备份实例，你不能附加一个引用到一个无状态函数组件。 通常这不是问题，因为无状态函数不提供一个命令式的API。没有命令式的API，你就没有任何需要实例来做的事。然而，如果用户想查找无状态函数组件的DOM节点，他们必须把这个组件包装在一个有状态组件里（比如，ES6 类组件） 并且连接一个引用到有状态的包装组件。</p>
 </blockquote>
 
-<p>In an ideal world, most of your components would be stateless functions because these stateless components can follow a faster code path within the React core. This is the recommended pattern, when possible.</p>
+<p>在理想世界里，你的大多数组件都应该是无状态函数式的，因为这些无状态组件可以在React核心里经过一个快速的代码路径。 如果可能，这是推荐的模式。</p>
 
 
     <div class="docs-prevnext">
       
-        <a class="docs-prev" href="/react/docs/multiple-components.html">&larr; Prev</a>
+        <a class="docs-prev" href="/react/docs/multiple-components-zh-CN.html">&larr; Prev</a>
       
       
-        <a class="docs-next" href="/react/docs/transferring-props.html">Next &rarr;</a>
+        <a class="docs-next" href="/react/docs/transferring-props-zh-CN.html">Next &rarr;</a>
       
     </div>
   </div>

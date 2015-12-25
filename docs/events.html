@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Event System | React</title>
+  <title>事件系统 | React</title>
   <meta name="viewport" content="width=device-width">
-  <meta property="og:title" content="Event System | React">
+  <meta property="og:title" content="事件系统 | React">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://facebook.github.io/react/docs/events.html">
+  <meta property="og:url" content="https://facebook.github.io/react/docs/events-zh-CN.html">
   <meta property="og:image" content="https://facebook.github.io/react/img/logo_og.png">
   <meta property="og:description" content="A JavaScript library for building user interfaces">
   <meta property="fb:app_id" content="623268441017527">
@@ -270,7 +270,7 @@
           </li>
         
           <li>
-            <a href="/react/docs/events.html" class="active">Event System</a>
+            <a href="/react/docs/events.html">Event System</a>
             
           </li>
         
@@ -406,15 +406,15 @@
 
   <div class="inner-content">
     <h1>
-      Event System
-      <a class="edit-page-link" href="https://github.com/facebook/react/tree/master/docs/docs/ref-05-events.md" target="_blank">Edit on GitHub</a>
+      事件系统
+      <a class="edit-page-link" href="https://github.com/facebook/react/tree/master/docs/docs/ref-05-events.zh-CN.md" target="_blank">Edit on GitHub</a>
     </h1>
     <div class="subHeader"></div>
 
-    <h2><a class="anchor" name="syntheticevent"></a>SyntheticEvent <a class="hash-link" href="#syntheticevent">#</a></h2>
-<p>Your event handlers will be passed instances of <code>SyntheticEvent</code>, a cross-browser wrapper around the browser&#39;s native event. It has the same interface as the browser&#39;s native event, including <code>stopPropagation()</code> and <code>preventDefault()</code>, except the events work identically across all browsers.</p>
+    <h2><a class="anchor" name=""></a>合成事件 <a class="hash-link" href="#">#</a></h2>
+<p>事件处理程序通过 <code>合成事件</code>（<code>SyntheticEvent</code>）的实例传递，<code>SyntheticEvent</code> 是浏览器原生事件跨浏览器的封装。<code>SyntheticEvent</code> 和浏览器原生事件一样有 <code>stopPropagation()</code>、<code>preventDefault()</code> 接口，而且这些接口夸浏览器兼容。</p>
 
-<p>If you find that you need the underlying browser event for some reason, simply use the <code>nativeEvent</code> attribute to get it. Every <code>SyntheticEvent</code> object has the following attributes:</p>
+<p>如果出于某些原因想使用浏览器原生事件，可以使用 <code>nativeEvent</code> 属性获取。每个和成事件（<code>SyntheticEvent</code>）对象都有以下属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">boolean</span> <span class="nx">bubbles</span>
 <span class="kr">boolean</span> <span class="nx">cancelable</span>
 <span class="nx">DOMEventTarget</span> <span class="nx">currentTarget</span>
@@ -431,55 +431,25 @@
 <span class="nx">string</span> <span class="nx">type</span>
 </code></pre></div>
 <blockquote>
-<p>Note:</p>
+<p>注意：</p>
 
-<p>As of v0.14, returning <code>false</code> from an event handler will no longer stop event propagation. Instead, <code>e.stopPropagation()</code> or <code>e.preventDefault()</code> should be triggered manually, as appropriate.</p>
+<p>React v0.12 中，事件处理程序返回 <code>false</code> 不再停止事件传播，取而代之，应该根据需要手动触发 <code>e.stopPropagation()</code> 或 <code>e.preventDefault()</code>。</p>
 </blockquote>
-<h2><a class="anchor" name="event-pooling"></a>Event pooling <a class="hash-link" href="#event-pooling">#</a></h2>
-<p>The <code>SyntheticEvent</code> is pooled. This means that the <code>SyntheticEvent</code> object will be reused and all properties will be nullified after the event callback has been invoked.
-This is for performance reasons.
-As such, you cannot access the event in an asynchronous way.</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">onClick</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">);</span> <span class="c1">// =&gt; nullified object.</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span> <span class="c1">// =&gt; &quot;click&quot;</span>
-  <span class="kd">var</span> <span class="nx">eventType</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">;</span> <span class="c1">// =&gt; &quot;click&quot;</span>
+<h2><a class="anchor" name=""></a>支持的事件 <a class="hash-link" href="#">#</a></h2>
+<p>React 将事件统一化，使事件在不同浏览器上有一致的属性。</p>
 
-  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">);</span> <span class="c1">// =&gt; null</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eventType</span><span class="p">);</span> <span class="c1">// =&gt; &quot;click&quot;</span>
-  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
-
-  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">clickEvent</span><span class="o">:</span> <span class="nx">event</span><span class="p">});</span> <span class="c1">// Won&#39;t work. this.state.clickEvent will only contain null values.</span>
-  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="nx">eventType</span><span class="o">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">type</span><span class="p">});</span> <span class="c1">// You can still export event properties.</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<p>Note:</p>
-
-<p>If you want to access the event properties in an asynchronous way, you should call <code>event.persist()</code> on the event, which will remove the synthetic event from the pool and allow references to the event to be retained by user code.</p>
-</blockquote>
-<h2><a class="anchor" name="supported-events"></a>Supported Events <a class="hash-link" href="#supported-events">#</a></h2>
-<p>React normalizes events so that they have consistent properties across
-different browsers.</p>
-
-<p>The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append <code>Capture</code> to the event name; for example, instead of using <code>onClick</code>, you would use <code>onClickCapture</code> to handle the click event in the capture phase.</p>
-<h3><a class="anchor" name="clipboard-events"></a>Clipboard Events <a class="hash-link" href="#clipboard-events">#</a></h3>
-<p>Event names:</p>
+<p>下面的事件处理程序在事件冒泡阶段被触发。如果要注册事件捕获处理程序，应该使用 <code>Capture</code> 事件，例如使用 <code>onClickCapture</code> 处理点击事件的捕获阶段，而不是 <code>onClick</code>。</p>
+<h3><a class="anchor" name=""></a>剪贴板事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onCopy onCut onPaste
 </code></pre></div>
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">DOMDataTransfer</span> <span class="nx">clipboardData</span>
-</code></pre></div><h3><a class="anchor" name="composition-events"></a>Composition Events <a class="hash-link" href="#composition-events">#</a></h3>
-<p>Event names:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">onCompositionEnd onCompositionStart onCompositionUpdate
-</code></pre></div>
-<p>Properties:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">string</span> <span class="nx">data</span>
-</code></pre></div><h3><a class="anchor" name="keyboard-events"></a>Keyboard Events <a class="hash-link" href="#keyboard-events">#</a></h3>
-<p>Event names:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>键盘事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onKeyDown onKeyPress onKeyUp
 </code></pre></div>
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">boolean</span> <span class="nx">altKey</span>
 <span class="nx">number</span> <span class="nx">charCode</span>
 <span class="kr">boolean</span> <span class="nx">ctrlKey</span>
@@ -492,26 +462,24 @@ different browsers.</p>
 <span class="kr">boolean</span> <span class="nx">repeat</span>
 <span class="kr">boolean</span> <span class="nx">shiftKey</span>
 <span class="nx">number</span> <span class="nx">which</span>
-</code></pre></div><h3><a class="anchor" name="focus-events"></a>Focus Events <a class="hash-link" href="#focus-events">#</a></h3>
-<p>Event names:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>焦点事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onFocus onBlur
 </code></pre></div>
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">DOMEventTarget</span> <span class="nx">relatedTarget</span>
-</code></pre></div><h3><a class="anchor" name="form-events"></a>Form Events <a class="hash-link" href="#form-events">#</a></h3>
-<p>Event names:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>表单事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onChange onInput onSubmit
 </code></pre></div>
-<p>For more information about the onChange event, see <a href="/react/docs/forms.html">Forms</a>.</p>
-<h3><a class="anchor" name="mouse-events"></a>Mouse Events <a class="hash-link" href="#mouse-events">#</a></h3>
-<p>Event names:</p>
+<p>关于 <code>onChange</code> 事件的更多信息，参见 <a href="/react/docs/forms-zh-CN.html">表单组件</a>。</p>
+<h3><a class="anchor" name=""></a>鼠标事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
 onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 </code></pre></div>
-<p>The <code>onMouseEnter</code> and <code>onMouseLeave</code> events propagate from the element being left to the one being entered instead of ordinary bubbling and do not have a capture phase.</p>
-
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">boolean</span> <span class="nx">altKey</span>
 <span class="nx">number</span> <span class="nx">button</span>
 <span class="nx">number</span> <span class="nx">buttons</span>
@@ -527,13 +495,13 @@ onMouseMove onMouseOut onMouseOver onMouseUp
 <span class="nx">number</span> <span class="nx">screenY</span>
 <span class="kr">boolean</span> <span class="nx">shiftKey</span>
 </code></pre></div><h3><a class="anchor" name="selection-events"></a>Selection Events <a class="hash-link" href="#selection-events">#</a></h3>
-<p>Event names:</p>
+<p>事件名称:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onSelect
-</code></pre></div><h3><a class="anchor" name="touch-events"></a>Touch Events <a class="hash-link" href="#touch-events">#</a></h3>
-<p>Event names:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>触控事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onTouchCancel onTouchEnd onTouchMove onTouchStart
 </code></pre></div>
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kr">boolean</span> <span class="nx">altKey</span>
 <span class="nx">DOMTouchList</span> <span class="nx">changedTouches</span>
 <span class="kr">boolean</span> <span class="nx">ctrlKey</span>
@@ -542,36 +510,36 @@ onMouseMove onMouseOut onMouseOver onMouseUp
 <span class="kr">boolean</span> <span class="nx">shiftKey</span>
 <span class="nx">DOMTouchList</span> <span class="nx">targetTouches</span>
 <span class="nx">DOMTouchList</span> <span class="nx">touches</span>
-</code></pre></div><h3><a class="anchor" name="ui-events"></a>UI Events <a class="hash-link" href="#ui-events">#</a></h3>
-<p>Event names:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>用户界面事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onScroll
 </code></pre></div>
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">number</span> <span class="nx">detail</span>
 <span class="nx">DOMAbstractView</span> <span class="nx">view</span>
-</code></pre></div><h3><a class="anchor" name="wheel-events"></a>Wheel Events <a class="hash-link" href="#wheel-events">#</a></h3>
-<p>Event names:</p>
+</code></pre></div><h3><a class="anchor" name=""></a>滚轮事件 <a class="hash-link" href="#">#</a></h3>
+<p>事件名称：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onWheel
 </code></pre></div>
-<p>Properties:</p>
+<p>属性：</p>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">number</span> <span class="nx">deltaMode</span>
 <span class="nx">number</span> <span class="nx">deltaX</span>
 <span class="nx">number</span> <span class="nx">deltaY</span>
 <span class="nx">number</span> <span class="nx">deltaZ</span>
 </code></pre></div><h3><a class="anchor" name="media-events"></a>Media Events <a class="hash-link" href="#media-events">#</a></h3>
-<p>Event names:</p>
+<p>事件名称:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted onEnded onError onLoadedData onLoadedMetadata onLoadStart onPause onPlay onPlaying onProgress onRateChange onSeeked onSeeking onStalled onSuspend onTimeUpdate onVolumeChange onWaiting
 </code></pre></div><h3><a class="anchor" name="image-events"></a>Image Events <a class="hash-link" href="#image-events">#</a></h3>
-<p>Event names:</p>
+<p>事件名称:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">onLoad onError
 </code></pre></div>
 
     <div class="docs-prevnext">
       
-        <a class="docs-prev" href="/react/docs/tags-and-attributes.html">&larr; Prev</a>
+        <a class="docs-prev" href="/react/docs/tags-and-attributes-zh-CN.html">&larr; Prev</a>
       
       
-        <a class="docs-next" href="/react/docs/dom-differences.html">Next &rarr;</a>
+        <a class="docs-next" href="/react/docs/dom-differences-zh-CN.html">Next &rarr;</a>
       
     </div>
   </div>

@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Tooling Integration | React</title>
+  <title>工具集成 | React</title>
   <meta name="viewport" content="width=device-width">
-  <meta property="og:title" content="Tooling Integration | React">
+  <meta property="og:title" content="工具集成 | React">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://facebook.github.io/react/docs/tooling-integration.html">
+  <meta property="og:url" content="https://facebook.github.io/react/docs/tooling-integration-zh-CN.html">
   <meta property="og:image" content="https://facebook.github.io/react/img/logo_og.png">
   <meta property="og:description" content="A JavaScript library for building user interfaces">
   <meta property="fb:app_id" content="623268441017527">
@@ -183,7 +183,7 @@
           </li>
         
           <li>
-            <a href="/react/docs/tooling-integration.html" class="active">Tooling Integration</a>
+            <a href="/react/docs/tooling-integration.html">Tooling Integration</a>
             
           </li>
         
@@ -406,38 +406,38 @@
 
   <div class="inner-content">
     <h1>
-      Tooling Integration
-      <a class="edit-page-link" href="https://github.com/facebook/react/tree/master/docs/docs/09-tooling-integration.md" target="_blank">Edit on GitHub</a>
+      工具集成
+      <a class="edit-page-link" href="https://github.com/facebook/react/tree/master/docs/docs/09-tooling-integration.zh-CN.md" target="_blank">Edit on GitHub</a>
     </h1>
     <div class="subHeader"></div>
 
-    <p>Every project uses a different system for building and deploying JavaScript. We&#39;ve tried to make React as environment-agnostic as possible.</p>
+    <p>每个项目使用一个不同的系统来建立和部署JavaScript.我们努力使React尽可能环境无关。</p>
 <h2><a class="anchor" name="react"></a>React <a class="hash-link" href="#react">#</a></h2><h3><a class="anchor" name="cdn-hosted-react"></a>CDN-hosted React <a class="hash-link" href="#cdn-hosted-react">#</a></h3>
-<p>We provide CDN-hosted versions of React <a href="/react/downloads.html">on our download page</a>. These pre-built files use the UMD module format. Dropping them in with a simple <code>&lt;script&gt;</code> tag will inject a <code>React</code> global into your environment. It should also work out-of-the-box in CommonJS and AMD environments.</p>
-<h3><a class="anchor" name="using-master"></a>Using master <a class="hash-link" href="#using-master">#</a></h3>
-<p>We have instructions for building from <code>master</code> <a href="https://github.com/facebook/react">in our GitHub repository</a>. We build a tree of CommonJS modules under <code>build/modules</code> which you can drop into any environment or packaging tool that supports CommonJS.</p>
-<h2><a class="anchor" name="jsx"></a>JSX <a class="hash-link" href="#jsx">#</a></h2><h3><a class="anchor" name="in-browser-jsx-transform"></a>In-browser JSX Transform <a class="hash-link" href="#in-browser-jsx-transform">#</a></h3>
-<p>If you like using JSX, Babel provides an <a href="http://babeljs.io/docs/usage/browser/">in-browser ES6 and JSX transformer for development</a> called browser.js that can be included from a <code>babel-core</code> npm release or from <a href="http://cdnjs.com/libraries/babel-core">CDNJS</a>. Include a <code>&lt;script type=&quot;text/babel&quot;&gt;</code> tag to engage the JSX transformer.</p>
+<p>我们提供了CDN-hosted版本的React<a href="/react/downloads.html">在我们的下载页面</a>.这些预构建的文件使用UMD模块格式。将他们放进一个简单的<code>&lt;script&gt;</code> 标签将会注入一个<code>React</code> 全局变量到你的环境里。这也同样在CommonJS 和 AMD 环境里开箱即用。</p>
+<h3><a class="anchor" name="-master"></a>使用 master <a class="hash-link" href="#-master">#</a></h3>
+<p>我们<a href="https://github.com/facebook/react">在我们的 GitHub repository</a>有从<code>master</code>构建的说明。我们在<code>build/modules</code> 下构建了一个CommonJS模块的树，你可以把它放到任何支持CommonJS的环境或者打包工具里。</p>
+<h2><a class="anchor" name="jsx"></a>JSX <a class="hash-link" href="#jsx">#</a></h2><h3><a class="anchor" name="jsx"></a>浏览器中的JSX转化 <a class="hash-link" href="#jsx">#</a></h3>
+<p>如果你喜欢使用JSX，Babel提供了一个被称为browser.js的<a href="http://babeljs.io/docs/usage/browser/">开发用的浏览器中的 ES6 和 JSX 转换器</a> ，它可以从<code>babel-core</code> npm release 或者<a href="http://cdnjs.com/libraries/babel-core">CDNJS</a> 中 include。Include <code>&lt;script type=&quot;text/babel&quot;&gt;</code> 标记来使用 JSX 转换器.</p>
 
 <blockquote>
-<p>Note:</p>
+<p>注意:</p>
 
-<p>The in-browser JSX transformer is fairly large and results in extraneous computation client-side that can be avoided. Do not use it in production — see the next section.</p>
+<p>浏览器中的JSX转换器相当大并且导致额外的本可避免的客户端计算。不要在生产环境中使用 - 见下一节。</p>
 </blockquote>
-<h3><a class="anchor" name="productionizing-precompiled-jsx"></a>Productionizing: Precompiled JSX <a class="hash-link" href="#productionizing-precompiled-jsx">#</a></h3>
-<p>If you have <a href="https://www.npmjs.com/">npm</a>, you can run <code>npm install -g babel-cli</code>. Babel has built-in support for React v0.12+. Tags are automatically transformed to their equivalent <code>React.createElement(...)</code>, <code>displayName</code> is automatically inferred and added to all <code>React.createClass</code> calls.</p>
+<h3><a class="anchor" name="--jsx"></a>投入生产: 预编译 JSX <a class="hash-link" href="#--jsx">#</a></h3>
+<p>如果你有<a href="https://www.npmjs.com/">npm</a>，你可以运行 <code>npm install -g babel-cli</code>. Babel 对React v0.12+ 有内建支持。 标签被自动转化为它们的等价物<code>React.createElement(...)</code>, <code>displayName</code> 被自动推断并添加到所有的React.createClass 调用。</p>
 
-<p>This tool will translate files that use JSX syntax to plain JavaScript files that can run directly in the browser. It will also watch directories for you and automatically transform files when they are changed; for example: <code>babel --watch src/ --out-dir lib/</code>.</p>
+<p>这个工具会把使用JSX语法的文件转化为简单的可直接在浏览器运行的JavaScript文件。它同样将为你监视目录并自动转化文件当他们变动时；例如：<code>babel --watch src/ --out-dir lib/</code>.</p>
 
-<p>Beginning with Babel 6, there are no transforms included by default. This means that options must be specified when running the <code>babel</code> command, or a <code>.babelrc</code> must specify options. Additional packages must also be installed which bundle together a number of transforms, called presets. The most common use when working with React will be to include the <code>es2015</code> and <code>react</code> presets. More information about the changes to Babel can be found in <a href="http://babeljs.io/blog/2015/10/29/6.0.0/">their blog post announcing Babel 6</a>.</p>
+<p>从 Babel 6 开始，默认不再包含转换。这意味这必须在运行 <code>babel</code> 命令时指定选项，或者 <code>.babelrc</code> 必须指定选项。附加的捆绑了一大批转化的包(presets)也同样需要被安装.协同React工作最常用的是 <code>es2015</code> 和 <code>react</code> presets.更多关于 Babel 变化的信息可以在 <a href="http://babeljs.io/blog/2015/10/29/6.0.0/">Babel 6 博客发布的信息</a>上找到.</p>
 
-<p>Here is an example of what you will do if using ES2015 syntax and React:</p>
+<p>这里是一个要使用ES2015 语法和 React 你该怎样做的例子：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">npm install babel-preset-es2015 babel-preset-react
 babel --presets es2015,react --watch src/ --out-dir lib/
 </code></pre></div>
-<p>By default JSX files with a <code>.js</code> extension are transformed. Run <code>babel --help</code> for more information on how to use Babel.</p>
+<p>默认模式下带有<code>.js</code>后缀的JSX文件被转化。运行 <code>babel --help</code> 获取更多关于如何使用 Babel 的信息。</p>
 
-<p>Example output:</p>
+<p>输出的例子：</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">$ cat test.jsx
 var HelloMessage = React.createClass({
   render: function() {
@@ -463,16 +463,16 @@ var HelloMessage = React.createClass({
 });
 
 ReactDOM.render(React.createElement(HelloMessage, { name: &quot;John&quot; }), mountNode);
-</code></pre></div><h3><a class="anchor" name="helpful-open-source-projects"></a>Helpful Open-Source Projects <a class="hash-link" href="#helpful-open-source-projects">#</a></h3>
-<p>The open-source community has built tools that integrate JSX with several editors and build systems. See <a href="https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations">JSX integrations</a> for the full list.</p>
+</code></pre></div><h3><a class="anchor" name=""></a>有帮助的开源项目 <a class="hash-link" href="#">#</a></h3>
+<p>开源社区已经创建了一些集成JSX到数个编辑器和构建系统的工具。全部列表请见<a href="https://github.com/facebook/react/wiki/Complementary-Tools#jsx-integrations">JSX integrations</a> 。</p>
 
 
     <div class="docs-prevnext">
       
-        <a class="docs-prev" href="/react/docs/more-about-refs.html">&larr; Prev</a>
+        <a class="docs-prev" href="/react/docs/more-about-refs-zh-CN.html">&larr; Prev</a>
       
       
-        <a class="docs-next" href="/react/docs/addons.html">Next &rarr;</a>
+        <a class="docs-next" href="/react/docs/addons-zh-CN.html">Next &rarr;</a>
       
     </div>
   </div>
